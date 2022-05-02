@@ -10,9 +10,8 @@ const Post = (props) => {
                     <span className={s.post__text}> {props.message}</span>
                 </div>
                 <Like likes={props.likeCount}/>
-                {/*<div className={s.post__text}>*/}
-                {/*    {props.message}*/}
-                {/*</div>*/}
+                <div className={s.post__text}>
+                </div>
             </div>
     )
 }

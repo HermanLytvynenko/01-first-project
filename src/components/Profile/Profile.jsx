@@ -3,7 +3,7 @@ import s from './Profile.module.css'
 import Post from "./MyPosts/Post";
 
 const Profile = () => {
-    return <div className={s.content}>
+    return <div>
         <div className={s.content__wallphoto}>
             <img src='https://i.imgur.com/4Bb1hpS.jpg'
                  title='Wall' alt='Wall photo'/>

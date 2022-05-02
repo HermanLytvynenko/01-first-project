@@ -7,8 +7,10 @@
     text-decoration: none;
     font-size: 30px;
 }
-.item.active{
+.active{
     color: yellow;
+    text-decoration: none;
+    font-size: 30px;
 }
 .item:hover{
     color:red;
