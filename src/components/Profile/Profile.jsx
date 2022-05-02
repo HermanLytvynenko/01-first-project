@@ -12,11 +12,17 @@ const Profile = () => {
             <img src="https://lapkins.ru/upload/iblock/130/1309222f033fb6928ea065578276ab44.jpg" alt="Avatar"/>
         </div>
         <div>
-            Ava + Description
+            <div className={s.newpost}>
+                <textarea className={s.newpost__text}>
+                    Текст нового поста
+                </textarea>
+                <button className={s.newpost__button}>
+                    Кнопка
+                </button>
+            </div>
         </div>
-        <Post />
-        <Post />
-        <Post />
+        <Post message='Hello, world!' likeCount='100'/>
+        <Post message='My first message!' likeCount='200'/>
     </div>
 }
 

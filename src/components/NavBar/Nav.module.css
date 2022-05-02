@@ -10,3 +10,7 @@
 .item.active{
     color: yellow;
 }
+.item:hover{
+    color:red;
+    border: 1px solid black;
+}
