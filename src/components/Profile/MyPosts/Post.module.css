@@ -1,0 +1,22 @@
+.content{
+    grid-area: content;
+    background-color: grey;
+}
+.post {
+
+}
+.post__image{
+display: inline-block;
+}
+.post__text{
+color: yellow;
+}
+.newpost {
+
+}
+.post__image img {
+    width: 100px;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+

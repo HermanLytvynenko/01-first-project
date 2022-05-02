@@ -1,0 +1,16 @@
+.content{
+    grid-area: content;
+    background-color: grey;
+}
+.content__ava img{
+    border: 3px solid black;
+    border-radius: 50%;
+}
+.post {
+    color: red;
+}
+.content__wallphoto img {
+    height: 200px;
+    width: 1200px;
+}
+
