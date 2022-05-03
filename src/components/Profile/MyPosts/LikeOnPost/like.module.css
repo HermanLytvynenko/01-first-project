@@ -1,4 +1,7 @@
+.like {
+    color: red;
+}
 .like:hover {
-    color: yellow;
+    text-decoration: line-through;
 }
 
