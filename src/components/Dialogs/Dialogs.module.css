@@ -11,7 +11,10 @@
 
 }
 .dialogsItems .active{
-    color: gold;
+    color: red;
+}
+.dialog:hover{
+    color: yellow;
 }
 
 .messages {
@@ -28,4 +31,13 @@
 }
 .active{
     color:yellow;
+}
+.messages .message {
+    color: white;
+}
+.dialogsItems a:hover{
+    color: yellow;
+}
+.dialogsItems a:active{
+    color: red;
 }

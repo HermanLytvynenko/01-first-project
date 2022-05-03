@@ -4,12 +4,15 @@ import s from './NewPost.module.css'
 const NewPost = () => {
     return (
         <div className={s.NewPostBlock}>
+            <h3>
+                My posts:
+            </h3>
             <div className={s.newpost}>
-                <textarea className={s.newpost__text}>
-                    Текст нового поста
-                </textarea>
+                <div>
+                    <textarea className={s.newpost__text} placeholder="Текст нового поста..."> </textarea>
+                </div>
                 <button className={s.newpost__button}>
-                    Кнопка
+                    Отправить!
                 </button>
             </div>
         </div>

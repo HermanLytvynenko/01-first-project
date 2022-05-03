@@ -13,3 +13,12 @@
 .NewPostBlock{
     padding: 15px;
 }
+button {
+    background-color: rgba(42, 88, 237, 0.58);
+    border-radius: 20px;
+}
+h3 {
+    margin: 50px 0 50px 0;
+    color: aliceblue;
+    font-size: 40px;
+}
