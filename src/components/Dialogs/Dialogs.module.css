@@ -41,3 +41,15 @@
 .dialogsItems a:active{
     color: red;
 }
+.newMessageButton {
+    background-color: rgba(104, 47, 253, 0.74);
+    height: 50px;
+    color: white;
+    font-size: 14px;
+    border-radius: 30%;
+    border: 3px black solid;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.newMessageButton:hover{
+    background-color: red;
+}

@@ -20,6 +20,6 @@ color: yellow;
     border-radius: 50%;
     border: 2px solid black;
 }
-.like:hover {
-    color: yellow;
+.likesText:hover {
+    color: #ff075d;
 }

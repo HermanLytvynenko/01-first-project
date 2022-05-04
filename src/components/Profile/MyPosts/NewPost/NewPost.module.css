@@ -13,9 +13,18 @@
 .NewPostBlock{
     padding: 15px;
 }
-button {
-    background-color: rgba(42, 88, 237, 0.58);
-    border-radius: 20px;
+.newPostButton {
+    background-color: rgba(104, 47, 253, 0.74);
+    height: 30px;
+    width: 180px;
+    color: white;
+    font-size: 14px;
+    border: 3px black solid;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10%;
+}
+.newPostButton:hover{
+    background-color: red;
 }
 h3 {
     margin: 50px 0 50px 0;

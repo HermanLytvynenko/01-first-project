@@ -2,6 +2,16 @@ import React from "react";
 import s from './NewPost.module.css'
 
 const NewPost = () => {
+
+
+
+    let newPostElement = React.createRef();
+    let addPost = () => {
+        let text = newPostElement.current.value;
+        alert(text)
+    }
+
+
     return (
         <div className={s.NewPostBlock}>
             <h3>
@@ -9,9 +19,9 @@ const NewPost = () => {
             </h3>
             <div className={s.newpost}>
                 <div>
-                    <textarea className={s.newpost__text} placeholder="Текст нового поста..."> </textarea>
+                    <textarea ref={newPostElement} placeholder={"Пиши свой пост сюда! =)"}></textarea>
                 </div>
-                <button className={s.newpost__button}>
+                <button className={s.newPostButton} onClick={ addPost }>
                     Отправить!
                 </button>
             </div>
