@@ -1,14 +1,16 @@
 import React from "react";
 import s from './NewPost.module.css'
 
-const NewPost = () => {
+const NewPost = (props) => {
 
 
 
     let newPostElement = React.createRef();
+
     let addPost = () => {
         let text = newPostElement.current.value;
-        alert(text)
+        (text == '') ? alert('Строка не может быть пустая!') : props.addPost(text);
+        newPostElement.current.value = '';
     }
 
 
@@ -17,7 +19,7 @@ const NewPost = () => {
             <h3>
                 My posts:
             </h3>
-            <div className={s.newpost}>
+            <div className={s.newPost}>
                 <div>
                     <textarea ref={newPostElement} placeholder={"Пиши свой пост сюда! =)"}></textarea>
                 </div>

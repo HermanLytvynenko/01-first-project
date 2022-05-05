@@ -12,13 +12,12 @@ import Profile from "./components/Profile/Profile";
 
 const App = (props) => {
     return (
-        <BrowserRouter>
                 <div className='app-wrapper'>
                     <Header/>
                     <Nav state={props.appState.friendBlockList}/>
                     <div className='app-wrapper-content'>
 						<Routes>
-							<Route path="/profile" element={<Profile state={props.appState.profilePage}/>}/>
+							<Route path="/profile" element={<Profile state={props.appState.profilePage} addPost={props.addPost}/>}/>
 							<Route path="/dialogs" element={<Dialogs state={props.appState.dialogPage} />}/>
                             <Route path="/news" element={<News />}/>
                             <Route path="/music" element={<Music />}/>
@@ -26,7 +25,6 @@ const App = (props) => {
                         </Routes>
                     </div>
                 </div>
-        </BrowserRouter>
     )
 }
 
