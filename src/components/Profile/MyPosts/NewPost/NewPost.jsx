@@ -1,21 +1,21 @@
 import React from "react";
 import s from './NewPost.module.css'
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../../Redux/State";
 
 const NewPost = (props) => {
-
-
 
     let newPostElement = React.createRef();
 
     let addPost = () => {
         let text = newPostElement.current.value;
-        (!text) ? alert('Строка не может быть пустая!') : props.dispatch({type: 'ADD-POST'});
+        (!text) ? alert('Строка не может быть пустая!') : props.dispatch(addPostActionCreator());
         newPostElement.current.value = '';
     }
 
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: text});
+        let action = updateNewPostTextActionCreator(text)
+        props.dispatch(action)
     }
 
     return (
