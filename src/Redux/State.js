@@ -1,5 +1,8 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+const SEND_MESSAGE = 'SEND-MESSAGE';
+
 
 let store = {
     _state : {
@@ -16,6 +19,7 @@ let store = {
                 {id: 3, message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, dolorum.'},
                 {id: 4, message: 'Yo!'},
             ],
+            newMessageText: 'sss',
         },
         profilePage: {
             posts: [
@@ -23,7 +27,7 @@ let store = {
                 {id: 2, message: 'My first message from State.JS', likesCount: 12},
                 {id: 2, message: 'Coooool!!!', likesCount: 77},
             ],
-            newPostText: ''
+            newPostText: '',
         },
         friendBlockList: {
             friendsList: [
@@ -56,16 +60,6 @@ let store = {
         this._indexRerender = observer;
     },
 
-    addPost (postMessage) {
-        let newPost = {
-            id: 4,
-            message: postMessage,
-            likesCount: 0,
-        };
-        this._state.profilePage.posts.push(newPost)
-        this._indexRerender(this._state)
-
-    },
     dispatch(action) {
         if (action.type === `ADD-POST`) {
             let newPost = {
@@ -78,13 +72,27 @@ let store = {
         } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
             this._state.profilePage.newPostText = action.newText;
             this._indexRerender(this._state)
-        }
+        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+            this._state.dialogPage.newMessageText = action.textOfMessage
+        } else if (action.type === 'SEND-MESSAGE') {
+            let newMessage = {
+                id: 5, message: this._state.dialogPage.newMessageText
+                };
+            this._state.dialogPage.messages.push(newMessage)
+            this._indexRerender(this._state)
+            }
     },
 }
 
 export const addPostActionCreator = () => {
     return {
         type: ADD_POST
+    }
+}
+
+export const sendMessageActionCreator = () => {
+    return {
+        type: SEND_MESSAGE
     }
 }
 
@@ -95,5 +103,11 @@ export const updateNewPostTextActionCreator = (text) => {
     }
 }
 
+export const updateNewMessageTextActionCreator = (text) => {
+    return {
+        type: UPDATE_NEW_MESSAGE_TEXT,
+        textOfMessage: text,
+    }
+}
 export default store;
 window.store = store;
