@@ -9,13 +9,13 @@ const NewPost = (props) => {
 
     let addPost = () => {
         let text = newPostElement.current.value;
-        (!text) ? alert('Строка не может быть пустая!') : props.addPost(text);
+        (!text) ? alert('Строка не может быть пустая!') : props.dispatch({type: 'ADD-POST'});
         newPostElement.current.value = '';
     }
 
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        props.updateNewPostText(text);
+        props.dispatch({type: 'UPDATE-NEW-POST-TEXT', newText: text});
     }
 
     return (
@@ -25,7 +25,7 @@ const NewPost = (props) => {
             </h3>
             <div className={s.newPost}>
                 <div>
-                    <textarea onChange={onPostChange} ref={newPostElement} placeholder={"Пиши свой пост сюда! =)"} />
+                    <textarea onChange={onPostChange} ref={newPostElement} placeholder={"Пиши свой пост сюда! =)"} value={props.newPostText}/>
                 </div>
                 <button className={s.newPostButton} onClick={ addPost }>
                     Отправить!
