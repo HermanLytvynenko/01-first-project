@@ -1,3 +1,6 @@
+import profileRecuder from "./profile-reducer";
+import dialogsRecuder from "./dialogs-reducer";
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
@@ -61,28 +64,11 @@ let store = {
     },
 
     dispatch(action) {
-        if (action.type === `ADD-POST`) {
-            let newPost = {
-                id: 4,
-                message: this._state.profilePage.newPostText,
-                likesCount: 0,
-            };
-            this._state.profilePage.posts.push(newPost)
-            this._indexRerender(this._state)
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._state.profilePage.newPostText = action.newText;
-            this._indexRerender(this._state)
-        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
-            this._state.dialogPage.newMessageText = action.textOfMessage
-            this._indexRerender(this._state)
-        } else if (action.type === 'SEND-MESSAGE') {
-            let newMessage = {
-                id: 5, message: this._state.dialogPage.newMessageText
-                };
-            this._state.dialogPage.messages.push(newMessage)
-            this._state.dialogPage.newMessageText = '';
-            this._indexRerender(this._state)
-            }
+
+        this._state.profilePage = profileRecuder(this._state.profilePage, action)
+        this._state.dialogPage = dialogsRecuder(this._state.dialogPage, action)
+
+        this._indexRerender(this._state)
     },
 }
 

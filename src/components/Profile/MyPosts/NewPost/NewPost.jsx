@@ -4,16 +4,15 @@ import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../../
 
 const NewPost = (props) => {
 
-    let newPostElement = React.createRef();
+    let newPostMessageText = props.newPostText;
 
     let addPost = () => {
-        let text = newPostElement.current.value;
-        (!text) ? alert('Строка не может быть пустая!') : props.dispatch(addPostActionCreator());
-        newPostElement.current.value = '';
+        (!newPostMessageText) ? alert('Строка не может быть пустая!') : props.dispatch(addPostActionCreator());
+        debugger
     }
 
-    let onPostChange = () => {
-        let text = newPostElement.current.value;
+    let onPostChange = (e) => {
+        let text = e.target.value;
         let action = updateNewPostTextActionCreator(text)
         props.dispatch(action)
     }
@@ -25,7 +24,7 @@ const NewPost = (props) => {
             </h3>
             <div className={s.newPost}>
                 <div>
-                    <textarea onChange={onPostChange} ref={newPostElement} placeholder={"Пиши свой пост сюда! =)"} value={props.newPostText}/>
+                    <textarea onChange={onPostChange} placeholder={"Пиши свой пост сюда! =)"} value={newPostMessageText}/>
                 </div>
                 <button className={s.newPostButton} onClick={ addPost }>
                     Отправить!
