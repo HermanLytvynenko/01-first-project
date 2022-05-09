@@ -4,24 +4,21 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {sendMessageActionCreator, updateNewMessageTextActionCreator} from "../../Redux/State";
 
-let newMessageElement = React.createRef();
 
 let Dialogs = (props) => {
 
-    let onDialogChange = () => {
-        let text = newMessageElement.current.value;
+    let onDialogChange = (e) => {
+        let text = e.target.value;
         let action = updateNewMessageTextActionCreator(text)
         props.dispatch(action)
     }
 
     let sendMessage = () => {
-        let text = newMessageElement.current.value;
-        (!text) ? alert('Строка не может быть пустая!') : props.dispatch(sendMessageActionCreator());
-        newMessageElement.current.value = '';
+        (!newMessageText) ? alert('Строка не может быть пустая!') : props.dispatch(sendMessageActionCreator());
     }
 
     let dialogsElements = props.state.dialogs.map(dialog => <DialogItem name={dialog.name} id={dialog.id}/>);
-
+    let newMessageText = props.state.newMessageText;
     let messagesElements = props.state.messages.map(message => <Message message={message.message}/>);
     return (
         <div className={s.dialogs}>
@@ -31,12 +28,15 @@ let Dialogs = (props) => {
             <div className={s.messages}>
                 {messagesElements}
             </div>
-            <div className={s.dialogTextArea}>
-                <textarea onChange={onDialogChange} ref={newMessageElement} placeholder={"Введите ваше сообщение..."} value={props.newMessageText}></textarea>
-            </div>
             <div>
-                <button onClick={ sendMessage } className={s.newMessageButton}>Отправить сообщение!</button>
+                <div className={s.dialogTextArea}>
+                    <textarea onChange={onDialogChange} placeholder={"Введите ваше сообщение..."} value={newMessageText}></textarea>
+                </div>
+                <div>
+                    <button onClick={ sendMessage } className={s.newMessageButton}>Отправить сообщение!</button>
+                </div>
             </div>
+
         </div>
     )
 }

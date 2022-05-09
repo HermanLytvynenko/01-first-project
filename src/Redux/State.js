@@ -19,7 +19,7 @@ let store = {
                 {id: 3, message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, dolorum.'},
                 {id: 4, message: 'Yo!'},
             ],
-            newMessageText: 'sss',
+            newMessageText: '',
         },
         profilePage: {
             posts: [
@@ -74,40 +74,22 @@ let store = {
             this._indexRerender(this._state)
         } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
             this._state.dialogPage.newMessageText = action.textOfMessage
+            this._indexRerender(this._state)
         } else if (action.type === 'SEND-MESSAGE') {
             let newMessage = {
                 id: 5, message: this._state.dialogPage.newMessageText
                 };
             this._state.dialogPage.messages.push(newMessage)
+            this._state.dialogPage.newMessageText = '';
             this._indexRerender(this._state)
             }
     },
 }
 
-export const addPostActionCreator = () => {
-    return {
-        type: ADD_POST
-    }
-}
+export const addPostActionCreator = () => ({type: ADD_POST})
+export const sendMessageActionCreator = () => ({type: SEND_MESSAGE})
+export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
+export const updateNewMessageTextActionCreator = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, textOfMessage: text})
 
-export const sendMessageActionCreator = () => {
-    return {
-        type: SEND_MESSAGE
-    }
-}
-
-export const updateNewPostTextActionCreator = (text) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        newText: text,
-    }
-}
-
-export const updateNewMessageTextActionCreator = (text) => {
-    return {
-        type: UPDATE_NEW_MESSAGE_TEXT,
-        textOfMessage: text,
-    }
-}
 export default store;
 window.store = store;
