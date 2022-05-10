@@ -12,7 +12,7 @@ const ProfileInfo = () => {
             {/********** AVATARKA + DESCRIPTION ***************/}
             <div className={s.ProfileInfoBlock}>
                 <div className={s.content__ava}>
-                    <img src="https://lapkins.ru/upload/iblock/130/1309222f033fb6928ea065578276ab44.jpg" alt="Avatar"/>
+                    <img src="https://i.imgur.com/2rUeyXM.jpeg" alt="Avatar"/>
                 </div>
                 <div className="profile__description">
                     Profile Description
