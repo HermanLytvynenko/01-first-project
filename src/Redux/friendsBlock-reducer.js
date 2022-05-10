@@ -18,9 +18,9 @@ let initialState = {
     ],
 };
 
-const friendsBlockRecuder = (state = initialState, action) => {
+const friendsBlockReducer = (state = initialState, action) => {
     
     return state;
 }
 
-export default friendsBlockRecuder;
+export default friendsBlockReducer;

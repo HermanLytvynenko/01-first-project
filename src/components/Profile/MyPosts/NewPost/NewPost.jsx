@@ -1,20 +1,17 @@
 import React from "react";
 import s from './NewPost.module.css'
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../../Redux/profile-reducer";
 
 const NewPost = (props) => {
 
-    let newPostMessageText = props.newPostText;
+    let newPostMessageText = props.newPostMessageText2;
 
-    let addPost = () => {
-        (!newPostMessageText) ? alert('Строка не может быть пустая!') : props.dispatch(addPostActionCreator());
-        debugger
+    let onAddPost = () => {
+        props.addNewPost();
     }
 
     let onPostChange = (e) => {
         let text = e.target.value;
-        let action = updateNewPostTextActionCreator(text)
-        props.dispatch(action)
+        props.updateNewPostText(text)
     }
 
     return (
@@ -26,7 +23,7 @@ const NewPost = (props) => {
                 <div>
                     <textarea onChange={onPostChange} placeholder={"Пиши свой пост сюда! =)"} value={newPostMessageText}/>
                 </div>
-                <button className={s.newPostButton} onClick={ addPost }>
+                <button className={s.newPostButton} onClick={ onAddPost }>
                     Отправить!
                 </button>
             </div>

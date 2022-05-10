@@ -17,7 +17,7 @@ let initialState = {
     newMessageText: '',
 };
 
-const dialogsRecuder = (state = initialState, action) => {
+const dialogsReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case UPDATE_NEW_MESSAGE_TEXT:
@@ -38,4 +38,4 @@ const dialogsRecuder = (state = initialState, action) => {
 export const sendMessageActionCreator = () => ({type: SEND_MESSAGE})
 export const updateNewMessageTextActionCreator = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, textOfMessage: text})
 
-export default dialogsRecuder;
+export default dialogsReducer;

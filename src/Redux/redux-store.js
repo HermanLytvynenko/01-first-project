@@ -1,12 +1,12 @@
 import {combineReducers, legacy_createStore as createStore} from "redux";
-import profileRecuder from "./profile-reducer";
-import dialogsRecuder from "./dialogs-reducer";
-import friendsBlockRecuder from "./friendsBlock-reducer";
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
+import friendsBlockReducer from "./friendsBlock-reducer";
 
 let reducers = combineReducers({
-    profilePage: profileRecuder,
-    dialogPage: dialogsRecuder,
-    friendBlockList: friendsBlockRecuder,
+    profilePage: profileReducer,
+    dialogPage: dialogsReducer,
+    friendBlockList: friendsBlockReducer,
 })
 
 let store = createStore(reducers);
