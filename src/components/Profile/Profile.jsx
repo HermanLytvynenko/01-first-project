@@ -5,11 +5,13 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import NewPostContainer from "./MyPosts/NewPost/NewPostContainer";
 
 const Profile = (props) => {
-    let postsElements = props.state.posts.map (post => <Post message={post.message} id={post.id} likeCount={post.likesCount} />);
+    let state = props.store.getState().profilePage.posts;
+    debugger
+    let postsElements = state.map (post => <Post message={post.message} id={post.id} likeCount={post.likesCount} />);
     return (
         <div>
             <ProfileInfo />
-            <NewPostContainer dispatch={props.dispatch} newPostText={props.state.newPostText}/>
+            <NewPostContainer store={props.store}/>
             {postsElements}
         </div>
     )

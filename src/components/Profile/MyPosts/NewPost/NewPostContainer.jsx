@@ -3,20 +3,21 @@ import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../../
 import NewPost from "./NewPost";
 
 const NewPostContainer = (props) => {
+    let state = props.store.getState();
 
-    let newPostMessageText = props.newPostText;
+    let newPostMessageText = state.profilePage.newPostText;
 
     let addPost = () => {
-        (!newPostMessageText) ? alert('Строка не может быть пустая!') : props.dispatch(addPostActionCreator());
+        (!newPostMessageText) ? alert('Строка не может быть пустая!') : props.store.dispatch(addPostActionCreator());
         debugger
     }
 
     let onPostChange = (text) => {
         let action = updateNewPostTextActionCreator(text)
-        props.dispatch(action)
+        props.store.dispatch(action)
     }
 
-    return (<NewPost updateNewPostText={onPostChange} addNewPost={addPost} newPostMessageText2={props.newPostText}/>)
+    return (<NewPost updateNewPostText={onPostChange} addNewPost={addPost} newPostMessageText2={newPostMessageText}/>)
 }
 
 export default NewPostContainer;
