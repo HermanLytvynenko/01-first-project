@@ -12,13 +12,19 @@ const profileRecuder = (state, action) => {
             };
             state.posts.push(newPost)
             state.newPostText = '';
-            break;
+            return state;
         case UPDATE_NEW_POST_TEXT:
             state.newPostText = action.newText;
-            break;
+            return state;
+
+        default:
+            return state;
     }
 
-    return state;
+
 }
+
+export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
+export const addPostActionCreator = () => ({type: ADD_POST})
 
 export default profileRecuder;

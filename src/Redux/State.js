@@ -1,12 +1,6 @@
 import profileRecuder from "./profile-reducer";
 import dialogsRecuder from "./dialogs-reducer";
 
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
-const SEND_MESSAGE = 'SEND-MESSAGE';
-
-
 let store = {
     _state : {
         dialogPage: {
@@ -71,11 +65,6 @@ let store = {
         this._indexRerender(this._state)
     },
 }
-
-export const addPostActionCreator = () => ({type: ADD_POST})
-export const sendMessageActionCreator = () => ({type: SEND_MESSAGE})
-export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
-export const updateNewMessageTextActionCreator = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, textOfMessage: text})
 
 export default store;
 window.store = store;

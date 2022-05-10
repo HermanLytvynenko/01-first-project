@@ -6,16 +6,20 @@ const dialogsRecuder = (state, action) => {
     switch (action.type) {
         case UPDATE_NEW_MESSAGE_TEXT:
             state.newMessageText = action.textOfMessage
-            break;
+            return state;
         case SEND_MESSAGE:
             let newMessage = {
                 id: 5, message: state.newMessageText
             };
             state.messages.push(newMessage)
             state.newMessageText = '';
-            break;
+            return state;
+        default:
+            return state;
     }
-    return state;
 }
+
+export const sendMessageActionCreator = () => ({type: SEND_MESSAGE})
+export const updateNewMessageTextActionCreator = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, textOfMessage: text})
 
 export default dialogsRecuder;
