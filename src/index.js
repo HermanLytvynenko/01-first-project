@@ -5,12 +5,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
+import StoreContext from "./StoreContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-let rerenderEntireTree = (state) => {
+let rerenderEntireTree = () => {
     root.render(
         <React.StrictMode>
-            <BrowserRouter><App store={store}/> </BrowserRouter>
+            <BrowserRouter>
+                <StoreContext.Provider value={store}>
+                    <App store={store}/>
+                </StoreContext.Provider>
+            </BrowserRouter>
         </React.StrictMode>
     );
 }
