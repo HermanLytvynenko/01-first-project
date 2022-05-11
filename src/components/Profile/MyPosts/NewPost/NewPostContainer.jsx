@@ -4,6 +4,7 @@ import NewPost from "./NewPost";
 
 const NewPostContainer = (props) => {
     let state = props.store.getState();
+    debugger
 
     let newPostMessageText = state.profilePage.newPostText;
 

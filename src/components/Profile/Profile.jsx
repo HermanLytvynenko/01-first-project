@@ -6,7 +6,6 @@ import NewPostContainer from "./MyPosts/NewPost/NewPostContainer";
 
 const Profile = (props) => {
     let state = props.store.getState().profilePage.posts;
-    debugger
     let postsElements = state.map (post => <Post message={post.message} id={post.id} likeCount={post.likesCount} />);
     return (
         <div>
