@@ -1,32 +1,28 @@
 import React from "react";
 import {sendMessageActionCreator, updateNewMessageTextActionCreator} from "../../Redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
-import StoreContext from "../../StoreContext";
+import {connect} from "react-redux";
 
 
-const DialogsContainer = () => {
 
-    return (
-        <StoreContext.Consumer>
-            {
-                (store) =>  {
-                    let state = store.getState();
-
-
-                    let onDialogChange = (text) => {
-                        let action = updateNewMessageTextActionCreator(text)
-                        store.dispatch(action)
-                    }
-
-                    let onSendMessage = () => {
-                        (!state.dialogPage.newMessageText) ? alert('Строка не может быть пустая!') : store.dispatch(sendMessageActionCreator());
-                    }
-                    return <Dialogs dialogPage={store.getState().dialogPage}
-                                    onSendMessage={onSendMessage}
-                             updateNewMessageText={onDialogChange}/>
-            }
-        }
-        </StoreContext.Consumer>)
+let mapStateToProps = (state) => {
+    return {
+        dialogPage: state.dialogPage,
+    }
 }
+let mapDispatchToProps = (dispatch) => {
+    return {
+        onSendMessage: () => {
+            // (!state.dialogPage.newMessageText) ? alert('Строка не может быть пустая!') :
+            dispatch(sendMessageActionCreator());
+        },
+        updateNewMessageText: (text) => {
+            let action = updateNewMessageTextActionCreator(text)
+            dispatch(action)
+        },
+    }
+}
+
+const DialogsContainer = connect(mapStateToProps,mapDispatchToProps)(Dialogs)
 
 export default DialogsContainer;

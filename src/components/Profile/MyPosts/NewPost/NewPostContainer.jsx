@@ -1,34 +1,28 @@
 import React from "react";
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../../Redux/profile-reducer";
 import NewPost from "./NewPost";
-import StoreContext from "../../../../StoreContext";
+import {connect} from "react-redux";
 
-const NewPostContainer = () => {
-
-    return (
-        <StoreContext.Consumer>
-            {
-
-                (store) => {
-                    debugger
-                    let state = store.getState();
-                    let newPostMessageText = state.profilePage.newPostText;
-                    let addPost = () => {
-                        (!newPostMessageText) ? alert('Строка не может быть пустая!') : store.dispatch(addPostActionCreator());
-                    }
-
-                    let onPostChange = (text) => {
-                        let action = updateNewPostTextActionCreator(text)
-                        store.dispatch(action)
-                    }
-
-                    return <NewPost updateNewPostText={onPostChange}
-                                    addNewPost={addPost}
-                                    newPostMessageText2={newPostMessageText}/>
-                }
-            }
-        </StoreContext.Consumer>)
+let mapStateToProps = (state) => {
+    return {
+        newPostMessageText2: state.profilePage.newPostText,
+        posts: state.profilePage.posts,
+    }
 }
+let mapDispatchToProps = (dispatch) => {
+    return {
+        addNewPost: () => {
+            // (!state.dialogPage.newMessageText) ? alert('Строка не может быть пустая!') :
+            dispatch(addPostActionCreator());
+        },
+        updateNewPostText: (text) => {
+            let action = updateNewPostTextActionCreator(text)
+            dispatch(action)
+        },
+    }
+}
+
+const NewPostContainer = connect(mapStateToProps,mapDispatchToProps)(NewPost)
 
 export default NewPostContainer;
 
