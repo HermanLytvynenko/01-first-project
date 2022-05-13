@@ -8,6 +8,7 @@ import Settings from "./components/Settings/Settings";
 import {Routes, Route} from "react-router-dom";
 import Profile from "./components/Profile/Profile";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
 const App = (props) => {
     let state = props.store.getState();
@@ -19,6 +20,7 @@ const App = (props) => {
 						<Routes>
 							<Route path="/profile" element={<Profile store={props.store} />}/>
 							<Route path="/dialogs" element={<DialogsContainer />}/>
+							<Route path="/users" element={<UsersContainer />}/>
                             <Route path="/news" element={<News />}/>
                             <Route path="/music" element={<Music />}/>
                             <Route path="/settings" element={<Settings />}/>
