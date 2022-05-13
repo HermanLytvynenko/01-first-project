@@ -9,10 +9,10 @@ let mapStateToProps = (state) => {
         posts: state.profilePage.posts,
     }
 }
+
 let mapDispatchToProps = (dispatch) => {
     return {
         addNewPost: () => {
-            // (!state.dialogPage.newMessageText) ? alert('Строка не может быть пустая!') :
             dispatch(addPostActionCreator());
         },
         updateNewPostText: (text) => {

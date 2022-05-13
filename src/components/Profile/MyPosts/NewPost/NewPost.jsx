@@ -3,8 +3,6 @@ import s from './NewPost.module.css'
 import Post from "../Post";
 
 const NewPost = (props) => {
-    debugger
-    let newPostMessageText = props.newPostMessageText2;
 
     let onAddPost = () => {
         props.addNewPost();
@@ -16,7 +14,7 @@ const NewPost = (props) => {
     }
 
     debugger
-    let postsElements = props.posts.map (post => <Post message={post.message} id={post.id} likeCount={post.likesCount} />);
+    let postsElements = props.posts.map (post => <Post message={post.message} id={post.id} likeCount={post.likesCount} key={post.id} />);
 
 
     return (
@@ -26,7 +24,7 @@ const NewPost = (props) => {
             </h3>
             <div className={s.newPost}>
                 <div>
-                    <textarea onChange={onPostChange} placeholder={"Пиши свой пост сюда! =)"} value={newPostMessageText}/>
+                    <textarea onChange={onPostChange} placeholder={"Пиши свой пост сюда! =)"} value={props.newPostMessageText2}/>
                 </div>
                 <button className={s.newPostButton} onClick={ onAddPost }>
                     Отправить!
